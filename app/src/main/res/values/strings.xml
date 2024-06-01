@@ -1,0 +1,33 @@
+<resources>
+    <string name="app_name">Task Manager</string>
+    <string name="more_options">More options</string>
+    <string name="unfinished_tasks">Unfinished tasks</string>
+    <string name="finished_tasks">Finished tasks</string>
+    <string name="tasks_statistics">Statistics</string>
+    <string name="action_search">Search</string>
+    <string name="msg_high_priority_tasks">High priority task list empty</string>
+    <string name="msg_middle_priority_tasks">Middle priority task list empty</string>
+    <string name="msg_low_priority_tasks">Low priority task list empty</string>
+    <string name="msg_no_tasks_found">No tasks found</string>
+    <string name="msg_default_fragment">Something bad happened!</string>
+    <string name="title_task_hint">Priority Task Title</string>
+    <string name="task_details">Task Details</string>
+    <string name="high_priority_task">Priority High Task</string>
+    <string name="default_date">01.01.2024</string>
+    <string name="default_time">08:00</string>
+    <string name="repeat_task">Repeat this task</string>
+    <string name="no_repeat">Don\'t repeat</string>
+    <string name="repeat_task_every_day">Every day</string>
+    <string name="repeat_task_every_week">Every week</string>
+    <string name="repeat_task_every_month">Every month</string>
+    <string name="repeat_task_every_year">Every year</string>
+    <string name="default_repeat_number">1</string>
+    <string name="remainder">Remind me</string>
+    <string name="no_remind">Don\'t remind me</string>
+    <string name="error">Oops something unexpected happened %1$s</string>
+    <string name="error_fields_empty">Don\'t leave text fields empty</string>
+    <string name="custom_error">Please contact your programmer!</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+</resources>

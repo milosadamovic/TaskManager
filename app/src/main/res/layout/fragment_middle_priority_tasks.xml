@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".middle_priority_tasks.MiddlePriorityTasksFragment">
+
+    <TextView
+        android:id="@+id/tvEmptyListMsg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/msg_middle_priority_tasks"
+        android:layout_gravity="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="visible"
+        tools:visibility="visible"/>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabCreateTask"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:src="@drawable/create_task"
+        android:visibility="visible"
+        app:backgroundTint="?android:attr/colorButtonNormal"
+        app:tint="@color/black"
+        tools:ignore="ContentDescription,SpeakableTextPresentCheck"
+        android:layout_gravity="bottom|end"/>
+
+</FrameLayout>

@@ -1,0 +1,534 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".creating_task.CreatingTaskFragment"
+    android:background="@color/appBarColorLight">
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/fixed_bottom"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintVertical_bias="0"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:id="@+id/main_llayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tfTitle"
+                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="28dp"
+                android:layout_marginEnd="32dp"
+                tools:hint="@string/title_task_hint"
+                app:cursorErrorColor="@color/tfError"
+                app:boxBackgroundColor="@color/appBarColorLight">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etTitle"
+                    android:textSelectHandle="@drawable/text_select_handle"
+                    android:textSelectHandleLeft="@drawable/text_select_handle"
+                    android:textSelectHandleRight="@drawable/text_select_handle"
+                    android:textColorHighlight="@color/textHandles"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:maxLength="12"
+                    android:maxLines="1"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="start"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="18dp"
+                android:layout_marginEnd="32dp" >
+
+                <Button
+                    android:id="@+id/btnToggleDate"
+                    android:textSize="18sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/default_date"
+                    android:backgroundTint="@color/appBarColorLight"
+                    android:textColor="@color/hintColor"
+                    style="?android:attr/buttonBarButtonStyle" />
+
+                <Button
+                    android:id="@+id/btnToggleTime"
+                    android:textSize="18sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/default_time"
+                    android:backgroundTint="@color/appBarColorLight"
+                    android:textColor="@color/hintColor"
+                    android:layout_marginStart="35dp"
+                    style="?android:attr/buttonBarButtonStyle" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"/>
+
+            <CalendarView
+                android:id="@+id/calendar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="18dp"
+                android:layout_marginEnd="10dp"
+                android:visibility="visible"
+                tools:visibility="gone" />
+
+
+            <TimePicker
+                    android:id="@+id/timePicker"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="18dp"
+                    android:layout_marginEnd="10dp"
+                    android:timePickerMode="spinner"
+                    android:descendantFocusability="blocksDescendants"
+                    android:visibility="gone"
+                    tools:visibility="gone"
+                    android:alpha="1" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tfDetails"
+                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="18dp"
+                android:layout_marginEnd="32dp"
+                android:hint="@string/task_details"
+                app:cursorErrorColor="@color/tfError"
+                app:boxBackgroundColor="@color/appBarColorLight"
+                >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etDetails"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:textSelectHandle="@drawable/text_select_handle"
+                    android:textSelectHandleLeft="@drawable/text_select_handle"
+                    android:textSelectHandleRight="@drawable/text_select_handle"
+                    android:textColorHighlight="@color/textHandles"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="start"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="18dp"
+                android:layout_marginEnd="32dp" >
+
+                <com.google.android.material.switchmaterial.SwitchMaterial
+                    android:id="@+id/swt_repeat"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    app:thumbTint="@color/appBarColorLight"/>
+
+                <TextView
+                    android:id="@+id/tvRepeatToggle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:text="@string/no_repeat"
+                    android:textSize="18sp"
+                    android:textColor="@color/hintColor"/>
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"/>
+
+            <LinearLayout
+                android:id="@+id/llRepeatResult"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="22dp"
+                android:layout_marginEnd="32dp"
+                android:orientation="horizontal"
+                android:visibility="gone"
+                tools:visibility="visible">
+
+                <TextView
+                    android:id="@+id/tvRepeatNumberResult"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:hint="Every 100"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    tools:textColorHint="@color/priorityHighPrimary"
+                    android:textColor="@color/appBarColorLight"/>
+
+                <TextView
+                    android:id="@+id/tvRepeatPeriodResult"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:hint=" days"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    tools:textColorHint="@color/priorityHighPrimary"
+                    android:textColor="@color/appBarColorLight"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llRepeatGroup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="18dp"
+                android:layout_marginEnd="32dp"
+                android:orientation="horizontal"
+                tools:visibility="visible"
+                android:visibility="gone"
+                android:alpha="1">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:layout_gravity="center">
+
+                    <RadioGroup
+                        android:id="@+id/rg"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:padding="5dp">
+
+                        <RadioButton
+                            android:id="@+id/rb1"
+                            android:tag="1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="18sp"
+                            android:text="@string/repeat_task_every_day"
+                            android:layout_marginTop="10dp"/>
+
+                        <RadioButton
+                            android:id="@+id/rb2"
+                            android:tag="2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="18sp"
+                            android:text="@string/repeat_task_every_week"
+                            android:layout_marginTop="10dp"/>
+
+                        <RadioButton
+                            android:id="@+id/rb3"
+                            android:tag="3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="18sp"
+                            android:text="@string/repeat_task_every_month"
+                            android:layout_marginTop="10dp"/>
+
+                        <RadioButton
+                            android:id="@+id/rb4"
+                            android:tag="4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:text="@string/repeat_task_every_year"
+                            android:textSize="18sp"
+                            tools:ignore="TouchTargetSizeCheck" />
+                    </RadioGroup>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="40dp">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/tfRb1"
+                        android:tag="tf1"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:boxBackgroundColor="@color/appBarColorLight"
+                        app:hintEnabled="false"
+                        app:hintAnimationEnabled="false">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etRb1"
+                            android:tag="et1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="18sp"
+                            android:hint="@string/default_repeat_number"
+                            android:inputType="number"
+                            android:maxLength="2"
+                            android:textSelectHandle="@drawable/text_select_handle"
+                            android:textSelectHandleLeft="@drawable/text_select_handle"
+                            android:textSelectHandleRight="@drawable/text_select_handle"
+                            android:textColorHighlight="@color/textHandles"/>
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/tfRb2"
+                        android:tag="tf2"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:boxBackgroundColor="@color/appBarColorLight"
+                        app:hintEnabled="false"
+                        app:hintAnimationEnabled="false">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etRb2"
+                            android:tag="et2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="18sp"
+                            android:hint="@string/default_repeat_number"
+                            android:inputType="number"
+                            android:maxLength="2"
+                            android:textSelectHandle="@drawable/text_select_handle"
+                            android:textSelectHandleLeft="@drawable/text_select_handle"
+                            android:textSelectHandleRight="@drawable/text_select_handle"
+                            android:textColorHighlight="@color/textHandles"/>
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/tfRb3"
+                        android:tag="tf3"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:boxBackgroundColor="@color/appBarColorLight"
+                        app:hintEnabled="false"
+                        app:hintAnimationEnabled="false">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etRb3"
+                            android:tag="et3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="18sp"
+                            android:hint="@string/default_repeat_number"
+                            android:inputType="number"
+                            android:maxLength="2"
+                            android:textSelectHandle="@drawable/text_select_handle"
+                            android:textSelectHandleLeft="@drawable/text_select_handle"
+                            android:textSelectHandleRight="@drawable/text_select_handle"
+                            android:textColorHighlight="@color/textHandles"/>
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/tfRb4"
+                        android:tag="tf4"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:boxBackgroundColor="@color/appBarColorLight"
+                        app:hintEnabled="false"
+                        app:hintAnimationEnabled="false">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etRb4"
+                            android:tag="et4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="18sp"
+                            android:hint="@string/default_repeat_number"
+                            android:inputType="number"
+                            android:maxLength="1"
+                            android:textSelectHandle="@drawable/text_select_handle"
+                            android:textSelectHandleLeft="@drawable/text_select_handle"
+                            android:textSelectHandleRight="@drawable/text_select_handle"
+                            android:textColorHighlight="@color/textHandles"/>
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="start"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="18dp"
+                android:layout_marginEnd="32dp" >
+
+                <com.google.android.material.switchmaterial.SwitchMaterial
+                    android:id="@+id/swt_remainder"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    app:thumbTint="@color/appBarColorLight"/>
+
+                <TextView
+                    android:id="@+id/tvRemindToggle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:text="@string/no_remind"
+                    android:textSize="18sp"
+                    android:textColor="@color/hintColor"/>
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="32dp"/>
+
+            <LinearLayout
+                android:id="@+id/llRemainderResult"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="22dp"
+                android:layout_marginEnd="32dp"
+                android:orientation="horizontal"
+                android:visibility="gone"
+                tools:visibility="visible">
+
+                <TextView
+                    android:id="@+id/tvRemainderNumberResult"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:hint="99"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    tools:textColorHint="@color/priorityHighPrimary"
+                    android:textColor="@color/appBarColorLight"/>
+
+                <TextView
+                    android:id="@+id/tvRemainderPeriodResult"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:hint=" minutes before"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    tools:textColorHint="@color/priorityHighPrimary"
+                    android:textColor="@color/appBarColorLight"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llRemainderGroup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="18dp"
+                android:layout_marginEnd="32dp"
+                android:orientation="horizontal"
+                android:visibility="gone"
+                tools:visibility="gone"
+                android:alpha="1">
+
+                <NumberPicker
+                    android:id="@+id/npNumber"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="32dp"
+                    android:theme="@style/CustomPickerTheme"
+                    android:descendantFocusability="blocksDescendants" />
+
+                <NumberPicker
+                    android:id="@+id/npPeriod"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginStart="40dp"
+                    android:theme="@style/CustomPickerTheme"
+                    android:descendantFocusability="blocksDescendants"/>
+
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+
+    <!--FIXED BOTTOM(BUTTONS) -->
+    <LinearLayout
+        android:id="@+id/fixed_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="1dp"
+        android:gravity="bottom|end"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintHorizontal_bias="0.0">
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fabCancelTask"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="40dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="16dp"
+            android:src="@drawable/cancel_task"
+            android:visibility="visible"
+            app:backgroundTint="?android:attr/colorButtonNormal"
+            app:tint="@color/black"
+            tools:ignore="ContentDescription,SpeakableTextPresentCheck" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fabAddTask"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="16dp"
+            android:src="@drawable/add_task"
+            android:visibility="visible"
+            app:backgroundTint="@color/colorSuccess"
+            app:tint="@color/black"
+            tools:ignore="ContentDescription,SpeakableTextPresentCheck" />
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

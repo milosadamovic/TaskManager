@@ -1,0 +1,36 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.TaskManager" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your light theme here. -->
+        <item name="colorPrimary">@color/appBarColorLight</item>
+
+    </style>
+
+    <style name="Theme.TaskManager" parent="Base.Theme.TaskManager" />
+
+
+    <!-- PopUp Menu -->
+    <style name="CustomPopupTheme" parent="ThemeOverlay.AppCompat.Light">
+        <item name="android:background">@color/appBarColorLight</item>
+        <item name="android:windowBackground">@color/appBarColorLight</item>
+        <item name="colorBackgroundFloating">@color/appBarColorLight</item>
+        <item name="android:colorForegroundInverse">@color/appBarColorLight</item>
+    </style>
+
+    <!-- Pickers Theme-->
+    <style name="CustomPickerTheme" parent="ThemeOverlay.AppCompat.Light">
+        <item name="colorAccent">@color/textSelected</item>
+        <item name="android:background">@color/appBarColorLight</item>
+        <item name="android:colorControlNormal">@android:color/transparent</item>
+        <item name="android:textColorPrimary">@color/hintColor</item>
+        <item name="android:textSize">30sp</item>
+    </style>
+
+
+    <!-- NoStyle -->
+    <style name="NoStyle">
+        <item name="colorPrimary">@color/white</item>
+    </style>
+
+
+</resources>
