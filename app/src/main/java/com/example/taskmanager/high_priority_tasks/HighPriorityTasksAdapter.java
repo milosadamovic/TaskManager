@@ -102,6 +102,7 @@ public class HighPriorityTasksAdapter extends RecyclerView.Adapter<HighPriorityT
                         .replace(R.id.fragment_container, createTask)
                         .addToBackStack(null)
                         .commit();
+
             }
             else Toast.makeText(ctx, "You can't edit finished task !", Toast.LENGTH_SHORT).show();
 

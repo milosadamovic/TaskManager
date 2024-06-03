@@ -8,7 +8,7 @@ import androidx.room.RoomDatabase;
 
 import java.util.concurrent.CompletableFuture;
 
-@Database(entities = {Task.class}, version = 7)
+@Database(entities = {Task.class}, version = 8)
 public abstract class TaskDB extends RoomDatabase {
 
     public abstract TaskDAO taskDAO();
