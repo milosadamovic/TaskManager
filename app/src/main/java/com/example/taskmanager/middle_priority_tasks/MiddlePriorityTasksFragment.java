@@ -149,7 +149,7 @@ public class MiddlePriorityTasksFragment extends Fragment {
 
                     AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
-                    builder.setTitle("DELETE THIS TASK ?")
+                    builder.setTitle("SUBMIT THIS TASK ?")
                             .setPositiveButton("YES", new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int id) {
 

@@ -601,6 +601,7 @@ public class CreatingTaskFragment extends Fragment {
                     tvRepeatPeriodResult.setText("");
                     tvRepeatToggle.setText(R.string.no_repeat);
                     clearRepetitionEditTexts();
+                    doRepeat = false;
 
                 }
 

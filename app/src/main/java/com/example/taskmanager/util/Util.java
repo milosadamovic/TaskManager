@@ -179,7 +179,7 @@ public class Util {
             if(taskRemainderTime > 0)
                 insertCalendarRemainder(ctx, cr, taskDueDate, taskRemainderTime, eventId);
 
-            Toast.makeText(ctx, "Event added to calendar", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(ctx, "Event added to calendar", Toast.LENGTH_SHORT).show();
             return eventId;
         }
 
@@ -235,7 +235,8 @@ public class Util {
         int rows = cr.delete(deleteUri, null, null);
 
         if (rows > 0 && deleteCalendarRemainder(ctx, cr, eventId) != -1)
-            Toast.makeText(ctx, "Event deleted successfully", Toast.LENGTH_SHORT).show();
+            Log.d("TEST","Event deleted successfully");
+            //Toast.makeText(ctx, "Event deleted successfully", Toast.LENGTH_SHORT).show();
         else Toast.makeText(ctx, "Failed to delete event from Calendar", Toast.LENGTH_SHORT).show();
 
     }
@@ -251,7 +252,8 @@ public class Util {
         Uri reminderUri = cr.insert(CalendarContract.Reminders.CONTENT_URI, reminderValues);
 
         if (reminderUri != null)
-            Toast.makeText(ctx, "Remainder added to calendar", Toast.LENGTH_SHORT).show();
+            Log.d("TEST","Remainder added to calendar");
+            //Toast.makeText(ctx, "Remainder added to calendar", Toast.LENGTH_SHORT).show();
         else Toast.makeText(ctx, "Failed to add Remainder to calendar", Toast.LENGTH_SHORT).show();
     }
 
@@ -272,7 +274,7 @@ public class Util {
                     int rows = cr.delete(CalendarContract.Reminders.CONTENT_URI, selection, selectionArgs);
                     if (rows > 0)
                     {
-                        Toast.makeText(ctx, "Reminder removed for event", Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(ctx, "Reminder removed for event", Toast.LENGTH_SHORT).show();
                         return 1;
 
                     }  else Toast.makeText(ctx, "Failed removing remainder", Toast.LENGTH_SHORT).show();
@@ -280,7 +282,7 @@ public class Util {
                 }
                 else
                 {
-                    Toast.makeText(ctx, "No reminder found for event", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(ctx, "No reminder found for event", Toast.LENGTH_SHORT).show();
                     return 0;
                 }
 

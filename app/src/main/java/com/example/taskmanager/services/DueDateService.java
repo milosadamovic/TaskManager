@@ -126,7 +126,7 @@ public class DueDateService extends Service {
         long timeDifference = dueDate - currentTime;
 
 
-        Toast.makeText(this, "service starting...", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "service starting...", Toast.LENGTH_SHORT).show();
 
 
         if (timeDifference > 0 && dueDate > currentTime)
@@ -155,7 +155,7 @@ public class DueDateService extends Service {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        Toast.makeText(this, "service done...", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "service done...", Toast.LENGTH_SHORT).show();
     }
 
 }
