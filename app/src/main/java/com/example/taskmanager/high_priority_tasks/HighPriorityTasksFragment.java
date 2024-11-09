@@ -56,8 +56,6 @@ public class HighPriorityTasksFragment extends Fragment{
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
-        Log.d("TESTY", "HighPriorityFragment onAttach()");
-
         try {
             listener = (OnButtonAddTaskClickedListener) context;
         }catch (ClassCastException e)
@@ -69,8 +67,6 @@ public class HighPriorityTasksFragment extends Fragment{
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.d("TESTY", "HighPriorityFragment onCreate()");
-
         viewModel = new ViewModelProvider(this).get(CustomViewModel.class);
     }
 
@@ -78,7 +74,6 @@ public class HighPriorityTasksFragment extends Fragment{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        Log.d("TESTY", "HighPriorityFragment onCreateView()");
 
         View view = inflater.inflate(R.layout.fragment_high_priority_tasks, container, false);
         fabCreateTask = view.findViewById(R.id.fabCreateTask);
@@ -226,8 +221,6 @@ public class HighPriorityTasksFragment extends Fragment{
             CreatingTaskFragment createTask = new CreatingTaskFragment();
             createTask.setArguments(bundle);
 
-            //TODO CLEARING DB TABLES
-            //viewModel.clearAllTables();
 
             getParentFragmentManager().beginTransaction()
             .replace(R.id.fragment_container, createTask)
@@ -244,7 +237,6 @@ public class HighPriorityTasksFragment extends Fragment{
 
         AlarmManager alarmManager = (AlarmManager) requireContext().getApplicationContext().getSystemService(Context.ALARM_SERVICE);
 
-        // Canceling remainder and task finished notification
         Intent alarmIntent = new Intent(requireContext().getApplicationContext(), TaskFinishedReceiver.class);
         alarmIntent.setAction("ACTION_NOTIFICATION_" + Integer.hashCode((int)t.getTask_id()));
         alarmIntent.addCategory("/" + Long.valueOf(t.getTask_id()).hashCode());
@@ -259,7 +251,6 @@ public class HighPriorityTasksFragment extends Fragment{
         alarmManager.cancel(pendingRemainderIntent);
     }
 
-    // TODO ZA TASKOVE KOJI SE PONAVLJAJU NA GODISNJEM NIVOU NISU UZETE U OBZIR (NE)PRESTUPNE GODINE - DOLAZI DO NETACNIH REZULTATA U SLUCAJU POJAVLJIVANJA PRESTUPNIH GODINA
     public void getNewDueDate(Task t)
     {
         newDueDate = t.getTask_repeatingDueDate();

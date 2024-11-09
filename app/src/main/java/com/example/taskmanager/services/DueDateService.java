@@ -68,7 +68,6 @@ public class DueDateService extends Service {
                     Toast.makeText(ctx, "Service Exception " + e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
 
-                // Setting remainder notification if remainder exists
                 if(notificationRemainderTime > 0)
                 {
                     Intent notificationRemainderIntent = new Intent(ctx, MainActivity.class);
@@ -108,7 +107,6 @@ public class DueDateService extends Service {
         HandlerThread thread = new HandlerThread("ServiceStartArguments", android.os.Process.THREAD_PRIORITY_BACKGROUND);
         thread.start();
 
-        // Get the HandlerThread's Looper and use it for our Handler
         serviceLooper = thread.getLooper();
         serviceHandler = new ServiceHandler(serviceLooper);
 
@@ -124,9 +122,6 @@ public class DueDateService extends Service {
         String title = intent.getStringExtra("title");
         long currentTime = System.currentTimeMillis();
         long timeDifference = dueDate - currentTime;
-
-
-        //Toast.makeText(this, "service starting...", Toast.LENGTH_SHORT).show();
 
 
         if (timeDifference > 0 && dueDate > currentTime)
@@ -155,7 +150,6 @@ public class DueDateService extends Service {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        //Toast.makeText(this, "service done...", Toast.LENGTH_SHORT).show();
     }
 
 }

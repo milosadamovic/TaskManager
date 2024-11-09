@@ -69,7 +69,6 @@ public class MainActivity extends AppCompatActivity implements OnButtonAddTaskCl
 
         showPermissionDialog();
 
-        // UI CONFIGURATION
         getWindow().setStatusBarColor(ContextCompat.getColor(this, R.color.appBarColorLight));
         getWindow().setNavigationBarColor(ContextCompat.getColor(this, R.color.appBarColorLight));
         getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR | View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR);
@@ -127,7 +126,6 @@ public class MainActivity extends AppCompatActivity implements OnButtonAddTaskCl
                 finishAffinity();
             }
         });
-        Log.d("TESTY", "MainActivity onCreate()");
        }
 
     @Override
@@ -163,7 +161,6 @@ public class MainActivity extends AppCompatActivity implements OnButtonAddTaskCl
             startActivity(searchTasks);
             return true;
         }else {
-            Log.d("TAGY", "Default option clicked");
             return super.onOptionsItemSelected(item);
         }
     }
@@ -207,7 +204,6 @@ public class MainActivity extends AppCompatActivity implements OnButtonAddTaskCl
                && ContextCompat.checkSelfPermission(this, Manifest.permission.RECEIVE_BOOT_COMPLETED) == PackageManager.PERMISSION_GRANTED
                && alarmManager.canScheduleExactAlarms() && powerManager.isIgnoringBatteryOptimizations(getPackageName()))
        {
-           //Toast.makeText(this, "Permissions Granted 1 !", Toast.LENGTH_SHORT).show();
        }
        else ActivityCompat.requestPermissions(this, new String[] {NOTIFICATION_PERMISSION, CALENDAR_READ_PERMISSION, CALENDAR_WRITE_PERMISSION, RECEIVE_BOOT_COMPLETED_PERMISSION}, REQUEST_CODE);
     }
@@ -254,41 +250,30 @@ public class MainActivity extends AppCompatActivity implements OnButtonAddTaskCl
             }
 
         } else showPermissionDialog();
-
     }
-
-
 
     @Override
     protected void onStart() {
         super.onStart();
-
-
-        Log.d("TESTY", "MainActivity onStart()");
     }
-
 
     @Override
     protected void onResume() {
         super.onResume();
-        Log.d("TESTY", "MainActivity onResume()");
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        Log.d("TESTY", "MainActivity onPause()");
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        Log.d("TESTY", "MainActivity onStop()");
     }
     @Override
     public void onDestroy() {
         super.onDestroy();
-        Log.d("TESTY", "MainActivity onDestroy()");
     }
 
 }

@@ -50,7 +50,6 @@ public class BootReceiver extends BroadcastReceiver {
                         ctx.startService(serviceIntent);
                     }
                 } else {
-                    Log.d("TEST_BOOT", "No tasks in progress found.");
                     Toast.makeText(ctx, "No tasks in progress found.", Toast.LENGTH_SHORT).show();
                 }
             });

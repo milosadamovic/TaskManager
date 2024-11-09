@@ -24,22 +24,18 @@ public class MainActivityAdapter extends FragmentStateAdapter {
     @Override
     public Fragment createFragment(int position) {
 
-        Log.d("TAGY", "MainActivityAdapter, position: " + position);
         Fragment fragment;
 
        switch (position)
         {
             case 0:
                     fragment = new HighPriorityTasksFragmentParent();
-                    Log.d("TAGY", "MainActivityAdapter, HighPriorityTasksFragmentParent added");
                     break;
             case 1:
                     fragment = new MiddlePriorityTasksFragmentParent();
-                    Log.d("TAGY", "MainActivityAdapter, MiddlePriorityTasksFragmentParent added");
                     break;
             case 2:
                     fragment = new LowPriorityTasksFragmentParent();
-                    Log.d("TAGY", "MainActivityAdapter, LowPriorityTasksFragmentParent added");
                     break;
 
             default: fragment = new DefaultFragment(); break;

@@ -179,7 +179,6 @@ public class Util {
             if(taskRemainderTime > 0)
                 insertCalendarRemainder(ctx, cr, taskDueDate, taskRemainderTime, eventId);
 
-            //Toast.makeText(ctx, "Event added to calendar", Toast.LENGTH_SHORT).show();
             return eventId;
         }
 
@@ -269,23 +268,14 @@ public class Util {
         if (cursor != null)
         {
             try {
-                if (cursor.getCount() > 0)
-                {
+                if (cursor.getCount() > 0) {
                     int rows = cr.delete(CalendarContract.Reminders.CONTENT_URI, selection, selectionArgs);
-                    if (rows > 0)
-                    {
-                        //Toast.makeText(ctx, "Reminder removed for event", Toast.LENGTH_SHORT).show();
+                    if (rows > 0) {
                         return 1;
+                    } else
+                        Toast.makeText(ctx, "Failed removing remainder", Toast.LENGTH_SHORT).show();
 
-                    }  else Toast.makeText(ctx, "Failed removing remainder", Toast.LENGTH_SHORT).show();
-
-                }
-                else
-                {
-                    //Toast.makeText(ctx, "No reminder found for event", Toast.LENGTH_SHORT).show();
-                    return 0;
-                }
-
+                } else return 0;
             } finally {
                 cursor.close();
             }
@@ -328,7 +318,6 @@ public class Util {
             }
         }
 
-        // Fallback: if no primary calendar is found, return the first available calendar
         if (primaryCalendarId == -1 && cursor == null) {
             try {
                 cursor = ctx.getContentResolver().query(CalendarContract.Calendars.CONTENT_URI, projection, null, null, null);
@@ -346,7 +335,6 @@ public class Util {
             }
         }
 
-        Log.d("TEST_CALENDAR", "CALENDAR_ID: " + primaryCalendarId);
         return primaryCalendarId;
 
     }

@@ -42,41 +42,34 @@ public class SearchingTasksActivityParent extends AppCompatActivity implements O
             return insets;
         });
 
-        // UI CONFIGURATION
         getWindow().setStatusBarColor(ContextCompat.getColor(this, R.color.appBarColorLight));
         getWindow().setNavigationBarColor(ContextCompat.getColor(this, R.color.appBarColorLight));
         getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR | View.SYSTEM_UI_FLAG_LIGHT_NAVIGATION_BAR);
 
-        Log.d("TESTY", "SearchingTasksActivityParent onCreate()");
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-        Log.d("TESTY", "SearchingTasksActivityParent onStart()");
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        Log.d("TESTY", "SearchingTasksActivityParent onResume()");
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        Log.d("TESTY", "SearchingTasksActivityParent onPause()");
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        Log.d("TESTY", "SearchingTasksActivityParent onStop()");
     }
     @Override
     public void onDestroy() {
         super.onDestroy();
-        Log.d("TESTY", "SearchingTasksActivityParent onDestroy()");
     }
 
     @Override

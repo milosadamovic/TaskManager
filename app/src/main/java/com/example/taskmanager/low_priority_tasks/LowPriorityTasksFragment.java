@@ -56,7 +56,6 @@ public class LowPriorityTasksFragment extends Fragment {
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
-        Log.d("TESTY", "LowPriorityTasksFragment onAttach()");
 
         try {
             listener = (OnButtonAddTaskClickedListener) context;
@@ -69,16 +68,12 @@ public class LowPriorityTasksFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.d("TESTY", "LowPriorityTasksFragment onCreate()");
-
         viewModel = new ViewModelProvider(this).get(CustomViewModel.class);
     }
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
-        Log.d("TESTY", "LowPriorityTasksFragment onCreateView()");
 
         View view = inflater.inflate(R.layout.fragment_low_priority_tasks, container, false);
         fabCreateTask = view.findViewById(R.id.fabCreateTask);
@@ -230,9 +225,6 @@ public class LowPriorityTasksFragment extends Fragment {
             CreatingTaskFragment createTask = new CreatingTaskFragment();
             createTask.setArguments(bundle);
 
-            //TODO CLEARING DB TABLES
-            //viewModel.clearAllTables();
-
             getParentFragmentManager().beginTransaction()
                     .replace(R.id.fragment_container, createTask)
                     .addToBackStack(null)
@@ -248,7 +240,6 @@ public class LowPriorityTasksFragment extends Fragment {
 
         AlarmManager alarmManager = (AlarmManager) requireContext().getApplicationContext().getSystemService(Context.ALARM_SERVICE);
 
-        // Canceling remainder and task finished notification
         Intent alarmIntent = new Intent(requireContext().getApplicationContext(), TaskFinishedReceiver.class);
         alarmIntent.setAction("ACTION_NOTIFICATION_" + Integer.hashCode((int)t.getTask_id()));
         alarmIntent.addCategory("/" + Long.valueOf(t.getTask_id()).hashCode());
@@ -278,30 +269,25 @@ public class LowPriorityTasksFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-        Log.d("TESTY", "LowPriorityTasksFragment onStart()");
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        Log.d("TESTY", "LowPriorityTasksFragment onResume()");
     }
 
     @Override
     public void onPause() {
         super.onPause();
-        Log.d("TESTY", "LowPriorityTasksFragment onPause()");
     }
 
     @Override
     public void onStop() {
         super.onStop();
-        Log.d("TESTY", "LowPriorityTasksFragment onStop()");
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
-        Log.d("TESTY", "LowPriorityTasksFragment onDestroy()");
     }
 }

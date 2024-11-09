@@ -35,7 +35,6 @@ import java.util.List;
 public class HighPriorityTasksAdapter extends RecyclerView.Adapter<HighPriorityTasksAdapter.CustomViewHolder>{
 
 
-    // TODO ZASTO CONTEXT MORA BITI OVDE ?!!
     Context ctx;
     List<Task> taskList;
     List<Boolean> collapsableTaskList;

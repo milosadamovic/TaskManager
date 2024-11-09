@@ -113,9 +113,6 @@ public class CreatingTaskFragment extends Fragment {
     public void onAttach(@NonNull Context context)
     {
         super.onAttach(context);
-
-        Log.d("TESTY", "CreatingTaskFragment onAttach()");
-
         try {
             listener = (OnButtonAddTaskClickedListener) context;
         }catch (ClassCastException e)
@@ -127,9 +124,6 @@ public class CreatingTaskFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        Log.d("TESTY", "CreatingTaskFragment onCreate()");
-
         activity = (AppCompatActivity) getActivity();
         viewModel = new ViewModelProvider(this).get(CustomViewModel.class);
         taskEditMode = false;
@@ -175,7 +169,6 @@ public class CreatingTaskFragment extends Fragment {
          timeFormat = new SimpleDateFormat("HH:mm", Locale.getDefault());
          dateTimeFormat = new SimpleDateFormat("dd.MM.yyyy HH:mm", Locale.getDefault());
 
-         // CHECK IF TASK IS IN EDIT MODE
         if (bundle != null)
         {
             if(bundle.getLongArray("longArr") != null && bundle.getBooleanArray("boolArr") != null && bundle.getStringArray("strArr") != null)
@@ -204,10 +197,8 @@ public class CreatingTaskFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        Log.d("TESTY", "CreatingTaskFragment onCreateView()");
         View view = inflater.inflate(R.layout.fragment_creating_task, container, false);
 
-        // VIEWS INIT
         fabAddTask = view.findViewById(R.id.fabAddTask);
         fabCancelTask = view.findViewById(R.id.fabCancelTask);
         tfTitle = view.findViewById(R.id.tfTitle);
@@ -240,13 +231,11 @@ public class CreatingTaskFragment extends Fragment {
         llRepeatResult = view.findViewById(R.id.llRepeatResult);
         llRemainderResult = view.findViewById(R.id.llRemainderResult);
 
-        //SETTING HINT AND COLOURS FOR THE TASK TITLE
         tfTitle.setHint(priorityText + " " + getResources().getString(R.string.title_task_hint));
         tfTitle.setBoxStrokeColorStateList(ColorStateList.valueOf(priorityColorPrimary));
         tfTitle.setHintTextColor(ColorStateList.valueOf(priorityColorPrimary));
         tfTitle.setCursorColor(ColorStateList.valueOf(priorityColorPrimary));
 
-        //SETTING COLOURS FOR TASK DETAILS
         tfDetails.setBoxStrokeColorStateList(ColorStateList.valueOf(priorityColorPrimary));
         tfDetails.setHintTextColor(ColorStateList.valueOf(priorityColorPrimary));
         tfDetails.setCursorColor(ColorStateList.valueOf(priorityColorPrimary));
@@ -255,10 +244,9 @@ public class CreatingTaskFragment extends Fragment {
         tvRemainderNumberResult.setTextColor(priorityColorPrimary);
         tvRemainderPeriodResult.setTextColor(priorityColorPrimary);
 
-        // FOR SOME REASON VIEW AND ALPHA PROPERTY CANT BE SET IN XML - BUG
+
         calendar.setVisibility(View.GONE);
 
-        // SETTING NUMBER PICKERS
         npPeriod.setMinValue(0);
         npPeriod.setMaxValue(periods.length-1);
         npPeriod.setDisplayedValues(periods);
@@ -326,7 +314,6 @@ public class CreatingTaskFragment extends Fragment {
         }
         else
         {
-            // SET CURRENT DATE AND TIME
             if(currentDate != null)
                 btnToggleDate.setText(currentDate);
 
@@ -335,11 +322,9 @@ public class CreatingTaskFragment extends Fragment {
         }
 
 
-        // TOGGLING VISIBILITY OF COLLAPSABLE VIEWS
         btnToggleDate.setOnClickListener( v -> toggleVisibility(DefaultParameters.CALENDAR_OPTION, true));
         btnToggleTime.setOnClickListener( v -> toggleVisibility(DefaultParameters.TIME_OPTION,true));
 
-        // UPDATING SELECTED DATE AND SETTING MINIMUM DATE FOR SELECTION
          Date currentDateTime = parsingStringToDate(currentDate, "dateFormat");
          if(currentDateTime != null)
          {
@@ -372,7 +357,6 @@ public class CreatingTaskFragment extends Fragment {
          } else Toast.makeText(requireContext(), getString(R.string.error, "Please contact your programmer!"), Toast.LENGTH_SHORT).show();
 
 
-        // UPDATING SELECTED TIME
         timePicker.setOnTimeChangedListener((view12, hourOfDay, minute) -> {
 
              String selectedTime = hourOfDay + ":" + minute;
@@ -396,7 +380,6 @@ public class CreatingTaskFragment extends Fragment {
 
         });
 
-        //TOGGLING VISIBILITY OF REPEAT AND REMAINDER GROUP VIEWS
         swt_repeat.setOnCheckedChangeListener((buttonView, isChecked) -> toggleVisibility(DefaultParameters.REPEAT_OPTION,isChecked));
         swt_remainder.setOnCheckedChangeListener((buttonView, isChecked) -> toggleVisibility(DefaultParameters.REMAINDER_OPTION,isChecked));
 
@@ -405,8 +388,6 @@ public class CreatingTaskFragment extends Fragment {
         etRb3.setFilters(new InputFilter[]{ new InputFilterMinMax("1", "15")});
         etRb4.setFilters(new InputFilter[]{ new InputFilterMinMax("1", "2")});
 
-
-        // SYNCING FOCUSED EDIT TEXT WITH CORRESPONDING RADIO BUTTON
         for(final EditText etRb : etRbList)
         {
 
@@ -468,7 +449,6 @@ public class CreatingTaskFragment extends Fragment {
             });
         }
 
-        // SYNCING CHECKED RADIO BUTTON WITH CORRESPONDING EDIT TEXT
         rg.setOnCheckedChangeListener((group, checkedId) -> {
 
             rb = view.findViewById(checkedId);
@@ -502,7 +482,6 @@ public class CreatingTaskFragment extends Fragment {
 
         });
 
-        // ADDING TASK TO DB
         fabAddTask.setBackgroundTintList(ColorStateList.valueOf(priorityColorPrimary));
         fabAddTask.setOnClickListener(v -> {
             createTask();

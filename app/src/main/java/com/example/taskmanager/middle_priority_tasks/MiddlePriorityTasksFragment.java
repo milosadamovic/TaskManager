@@ -56,8 +56,6 @@ public class MiddlePriorityTasksFragment extends Fragment {
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
-        Log.d("TESTY", "MiddlePriorityTasksFragment onAttach()");
-
         try {
             listener = (OnButtonAddTaskClickedListener) context;
         }catch (ClassCastException e)
@@ -69,16 +67,12 @@ public class MiddlePriorityTasksFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.d("TESTY", "MiddlePriorityTasksFragment onCreate()");
-
         viewModel = new ViewModelProvider(this).get(CustomViewModel.class);
     }
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
-        Log.d("TESTY", "MiddlePriorityTasksFragment onCreateView()");
 
         View view = inflater.inflate(R.layout.fragment_middle_priority_tasks, container, false);
         fabCreateTask = view.findViewById(R.id.fabCreateTask);
@@ -231,8 +225,6 @@ public class MiddlePriorityTasksFragment extends Fragment {
             CreatingTaskFragment createTask = new CreatingTaskFragment();
             createTask.setArguments(bundle);
 
-            //TODO CLEARING DB TABLES
-            //viewModel.clearAllTables();
 
             getParentFragmentManager().beginTransaction()
                     .replace(R.id.fragment_container, createTask)
@@ -249,7 +241,6 @@ public class MiddlePriorityTasksFragment extends Fragment {
 
         AlarmManager alarmManager = (AlarmManager) requireContext().getApplicationContext().getSystemService(Context.ALARM_SERVICE);
 
-        // Canceling remainder and task finished notification
         Intent alarmIntent = new Intent(requireContext().getApplicationContext(), TaskFinishedReceiver.class);
         alarmIntent.setAction("ACTION_NOTIFICATION_" + Integer.hashCode((int)t.getTask_id()));
         alarmIntent.addCategory("/" + Long.valueOf(t.getTask_id()).hashCode());
@@ -279,30 +270,25 @@ public class MiddlePriorityTasksFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-        Log.d("TESTY", "MiddlePriorityTasksFragment onStart()");
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        Log.d("TESTY", "MiddlePriorityTasksFragment onResume()");
     }
 
     @Override
     public void onPause() {
         super.onPause();
-        Log.d("TESTY", "MiddlePriorityTasksFragment onPause()");
     }
 
     @Override
     public void onStop() {
         super.onStop();
-        Log.d("TESTY", "MiddlePriorityTasksFragment onStop()");
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
-        Log.d("TESTY", "MiddlePriorityTasksFragment onDestroy()");
     }
 }

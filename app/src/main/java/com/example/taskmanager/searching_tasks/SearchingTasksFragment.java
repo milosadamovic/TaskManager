@@ -72,7 +72,6 @@ public class SearchingTasksFragment extends Fragment {
             }
         });
 
-        Log.d("TESTY", "SearchingTasksFragment onCreate()");
     }
 
     @Override
@@ -92,9 +91,6 @@ public class SearchingTasksFragment extends Fragment {
 
         adapter = new SearchingTasksAdapter(requireContext(), taskList, collapsableTaskList, getParentFragmentManager());
         recyclerView.setAdapter(adapter);
-
-
-        Log.d("TESTY", "SearchingTasksFragment onCreateView()");
 
         return view;
     }
@@ -195,30 +191,25 @@ public class SearchingTasksFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-        Log.d("TESTY", "SearchingTasksFragment onStart()");
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        Log.d("TESTY", "SearchingTasksFragment onResume()");
     }
 
     @Override
     public void onPause() {
         super.onPause();
-        Log.d("TESTY", "SearchingTasksFragment onPause()");
     }
 
     @Override
     public void onStop() {
         super.onStop();
-        Log.d("TESTY", "SearchingTasksFragment onStop()");
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
-        Log.d("TESTY", "SearchingTasksFragment onDestroy()");
     }
 }
