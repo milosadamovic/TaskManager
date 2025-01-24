@@ -10,5 +10,5 @@ Application Functionalities:
 - CRUD operations on tasks by priority using Room Database
 - Searching tasks
 - Setting deadlines, and possibility of setting remainders and repeating of tasks.
-- Getting notifications even after restarting the phone using Services and Broadcast Receivers
+- Getting notifications even after rebooting the phone using Services and Broadcast Receivers
 - Syncing with Android calendar using Content Resolver
